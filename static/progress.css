@@ -1,0 +1,15 @@
+.progress_bar{
+width:600px;
+background: white;
+padding: 2rem 2.5rem;
+box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+border-radius: 10px;
+}
+
+.progress-bar .bar{
+margin 2.2rem 0;
+}
+.progress-bar .bar:first-child{
+margin-top: 0px;
+}
+.progress-bar .bar .info{}

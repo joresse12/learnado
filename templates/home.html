@@ -1,0 +1,249 @@
+{% extends "base.html" %}
+{% block title %}Startseite{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="static/carroussel.css"/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+{% endblock %}
+
+{% block content %}
+<h1>Hallo {{ name }}!</h1>
+<div class="search-bar">
+  <input type="text" placeholder="Suche nach Kurse, Themen oder Schlagwörter...">
+  <i class="fas fa-search"></i>
+</div>
+<div class="floating-widgets">
+  <div class="progress-box">
+    <h3>Stark!</h3>
+    <div class="progress-bar-container">
+      <div class="progress-bar" style="width: 65%;"></div>
+    </div>
+    <p>Du hast 65% deines Lernziels erreicht!</p>
+  </div>
+  <img src="{{ url_for('static', filename='images/lernender.png') }}" loading="lazy" alt="Lernender" class="lernender-img">
+</div>
+
+
+<section class="pt-5 pb-5 carousel-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <h3 class="mb-3"><i class="fas fa-history me-2"></i>Angefangene Kurse</h3>
+      </div>
+      <div class="col-12">
+        <div id="carouselCourses" class="carousel slide" data-bs-ride="false">
+
+          <div class="carousel-inner">
+            {% for chunk in ongoing|batch(3, fill_with={}) %}
+              <div class="carousel-item {% if loop.first %}active{% endif %}">
+                <div class="row">
+                  {% for course in chunk %}
+                    {% if course.title %}
+                      <div class="col-md-4 mb-3">
+                        <div class="course-card">
+                          <div class="video-thumbnail">
+                            <i class="fas fa-play"></i>
+                          </div>
+                          <div class="course-info">
+                            <h4 class="course-title">{{ course.title }}</h4>
+                            <p class="course-owner">{{ course.owner }}</p>
+                            <div class="progress-bar-wrapper">
+                              <div class="progress-bar-fill"
+                                   style="width: {{ course.progress|default(65) }}%;
+                                          background-color:
+                                            {% if course.progress < 30 %}#9e1c1c
+                                            {% elif course.progress < 70 %}#d5a100
+                                            {% else %}#0c6c29{% endif %};">
+                              </div>
+                            </div>
+                            <p class="progress-text">Zu {{ course.progress|default(65) }}% abgeschlossen</p>
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+
+          <!-- Linker Pfeil -->
+          <a class="carousel-control-prev" href="#carouselCourses" role="button" data-bs-slide="prev">
+            <span class="carousel-arrow">❮</span>
+          </a>
+          <!-- Rechter Pfeil -->
+          <a class="carousel-control-next" href="#carouselCourses" role="button" data-bs-slide="next">
+            <span class="carousel-arrow">❯</span>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Empfohlene Kurse - moderner Carousel-Stil 
+<section class="pt-5 pb-5 carousel-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <h3 class="mb-3">Empfohlene Kurse</h3>
+      </div>
+      <div class="col-12">
+        <div id="carouselCourses2" class="carousel slide" data-bs-ride="false">
+
+          <div class="carousel-inner">
+            {% for chunk in empfohlen|batch(3, fill_with={}) %}
+              <div class="carousel-item {% if loop.first %}active{% endif %}">
+                <div class="row">
+                  {% for course in chunk %}
+                    {% if course.title %}
+                      <div class="col-md-4 mb-3">
+                        <div class="course-card">
+                          <div class="video-thumbnail">
+                            <i class="fas fa-play"></i>
+                          </div>
+                          <div class="course-info">
+                            <h4 class="course-title">{{ course.title }}</h4>
+                            <p class="course-owner">{{ course.owner }}</p>
+                            <div class="progress-bar-wrapper">
+                              <div class="progress-bar-fill" style="width: 0%; background-color: #cccccc;"></div>
+                            </div>
+                            <p class="progress-text">Jetzt starten</p>
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+
+          <a class="carousel-control-prev" href="#carouselCourses2" role="button" data-bs-slide="prev">
+            <span class="carousel-arrow">❮</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselCourses2" role="button" data-bs-slide="next">
+            <span class="carousel-arrow">❯</span>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+
+<!-- Empfohlene Kurse - moderner Carousel-Stil mit Fake-API-Daten -->
+<section class="pt-5 pb-5 carousel-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <h3 class="mb-3">Empfohlene Kurse (Demo)</h3>
+      </div>
+      <div class="col-12">
+        <div id="carouselCourses2" class="carousel slide" data-bs-ride="false">
+
+          <div class="carousel-inner">
+            {% for chunk in youtube_courses|batch(3, fill_with={}) %}
+              <div class="carousel-item {% if loop.first %}active{% endif %}">
+                <div class="row">
+                  {% for course in chunk %}
+                    {% if course.title %}
+                      <div class="col-md-4 mb-3">
+                        <div class="course-card">
+                          <div class="video-thumbnail" style="background-image: url('{{ course.img }}'); background-size: cover;">
+                            <a href="https://www.youtube.com/watch?v={{ course.videoId }}" target="_blank" class="video-link">
+                              <i class="fas fa-play"></i>
+                            </a>
+                          </div>
+                          <div class="course-info">
+                            <h4 class="course-title">{{ course.title }}</h4>
+                            <p class="course-owner">{{ course.author }}</p>
+                            <div class="progress-bar-wrapper">
+                              <div class="progress-bar-fill" style="width: 0%; background-color: #cccccc;"></div>
+                            </div>
+                            <p class="progress-text">Jetzt starten</p>
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+
+          <a class="carousel-control-prev" href="#carouselCourses2" role="button" data-bs-slide="prev">
+            <span class="carousel-arrow">❮</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselCourses2" role="button" data-bs-slide="next">
+            <span class="carousel-arrow">❯</span>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Community-Kurse - moderner Carousel-Stil -->
+<section class="pt-5 pb-5 carousel-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <h3 class="mb-3">Top Kurse der Community</h3>
+      </div>
+      <div class="col-12">
+        <div id="carouselCourse3" class="carousel slide" data-bs-ride="false">
+
+          <div class="carousel-inner">
+            {% for chunk in community|batch(3, fill_with={}) %}
+              <div class="carousel-item {% if loop.first %}active{% endif %}">
+                <div class="row">
+                  {% for course in chunk %}
+                    {% if course.title %}
+                      <div class="col-md-4 mb-3">
+                        <div class="course-card">
+                          <div class="video-thumbnail">
+                            <i class="fas fa-play"></i>
+                          </div>
+                          <div class="course-info">
+                            <h4 class="course-title">{{ course.title }}</h4>
+                            <p class="course-owner">{{ course.owner }}</p>
+                            <div class="progress-bar-wrapper">
+                              <div class="progress-bar-fill" style="width: 0%; background-color: #cccccc;"></div>
+                            </div>
+                            <p class="progress-text">Jetzt entdecken</p>
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+
+          <a class="carousel-control-prev" href="#carouselCourse3" role="button" data-bs-slide="prev">
+            <span class="carousel-arrow">❮</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselCourse3" role="button" data-bs-slide="next">
+            <span class="carousel-arrow">❯</span>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}
+

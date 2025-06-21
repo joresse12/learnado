@@ -1,0 +1,188 @@
+.card {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border: none;
+    border-radius: 12px;
+    /*transition: transform 0.2s ease-in-out;*/
+    height: 280px;           /* ⬅️ Karte insgesamt kleiner */
+    width:280px
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+/* h1{
+transform:translateX(-17%)
+}
+h3{
+transform:translateX(-37%)
+} */
+h1, h3 {
+    color: #40508f;
+    text-align: left;
+    transform: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #2f396a;
+}
+
+h3 {
+    margin-bottom: 20px;
+    color: #2f396a;
+}
+
+h3:first-of-type {
+  font-size: 1.8rem;
+  color: #2f396a;
+  font-weight: bold;
+}
+
+
+.card img {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    object-fit: cover;
+    height: 180px;            /* ⬅️ Bild kleiner */
+    width: 280px;
+}
+
+.card-body {
+    padding: 8px;
+    font-size: 0.85rem;      /* ⬅️ Schrift kleiner */
+}
+
+.card-title {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+
+}
+
+.card-text {
+    font-size: 0.8rem;
+    margin-bottom: 0;
+
+
+}
+      /* Buttons links und rechts außen am Carousel */
+      #carouselCourses,
+      #carouselCourses2,
+      #carouselCourse3 {
+        position: relative;
+        width: 100%;
+        transform: none;
+       /* gap: 10px;  Optional: Abstand zwischen den Kurskarten */
+      }
+
+      .carousel-control-prev, .carousel-control-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        color: #40508f; /* Farbe der Pfeile */
+        font-size: 30px;
+        cursor: pointer;
+        z-index: 10;
+        text-decoration: none;
+      }
+      .carousel-control-prev {
+        left: -50px; /* Abstand links außen */
+      }
+      .carousel-control-next {
+        right: -50px; /* Abstand rechts außen */
+      }
+      .carousel-control-prev,
+      .carousel-control-next {
+      font-size: 36px; /* Größe des Unicode-Pfeils ❮❯ */
+
+     }
+      .carousel-control-prev:hover, .carousel-control-next:hover {
+        color: #2f396a; /* Optional: dunklerer Farbton beim Hover */
+        background-color: transparent;
+        text-decoration: bold;
+      }
+
+
+.carousel-section {
+    margin-bottom: 40px;
+}
+
+.carousel-inner {
+    padding: 0 20px;
+}
+
+.course-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+  min-height: 280px;
+}
+
+.video-thumbnail {
+  background-color: #b0cbe6;
+  border-radius: 12px;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: white;
+}
+
+.course-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2c57;
+  margin: 0;
+}
+
+.course-owner {
+  font-size: 0.85rem;
+  color: #2d6b1f;
+  margin: 0;
+}
+
+.progress-bar-wrapper {
+  background-color: #e0e0e0;
+  border-radius: 6px;
+  height: 8px;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  transition: width 0.3s ease-in-out;
+}
+
+.progress-text {
+  font-size: 0.75rem;
+  color: #7a8aa2;
+  margin: 4px 0 0;
+}
+
+.course-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+}

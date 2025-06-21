@@ -1,0 +1,175 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #FFFFFF, #c4f5f7);
+    color: #40508f;
+    min-height: 100vh;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;;
+    top:0;
+    padding: 10px 20px;
+    flex-wrap: wrap;
+    min-height: 80px;
+    gap: 10px; /* Abstand zwischen Logo und Navigation */
+    background-color:#FFFFFF;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    /*background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.6),rgba(255, 255, 255, 0));*/
+    z-index: 1000;
+}
+.header-icons {
+    display: flex;
+    font-size: 1.4rem;
+    gap: 15px;
+    align-items: center;
+    font-size: 1.8rem;
+}
+
+.header-icons a {
+    color: #40508f;
+    text-decoration: none;
+}
+.header-icons a:hover {
+    color: #2f396a;
+}
+
+
+.logo {
+    flex: 0 0 auto;
+}
+
+.logo img {
+    max-height: 70px;
+    width: auto;
+    height: auto;
+}
+
+nav {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    padding: 10px 0;
+    transform: none;
+}
+
+nav a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #40508f;
+}
+
+nav a:hover,
+nav a:focus {
+    text-decoration: underline;
+}
+
+.content {
+    padding: 20px;
+}
+
+.search-bar {
+    position: sticky;
+    top: 90px; /* Abstand zum Header */
+    z-index: 900;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 30px;
+    padding: 10px 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 600px;
+    margin: 20px 0;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 1rem;
+}
+
+.search-bar i {
+    color: #40508f;
+    font-size: 1.2rem;
+}
+
+.progress-box {
+    background: white;
+    border: 2px solid #a6d8d9;
+    border-radius: 12px;
+    padding: 15px 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    width: 250px;
+    float: right;
+    margin-top: -100px;
+}
+
+.progress-box h3 {
+    margin-top: 0;
+    color: #2f396a;
+}
+
+.progress-bar-container {
+    background-color: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0;
+    height: 20px;
+}
+
+.progress-bar {
+    background-color: #1b9c4a;
+    height: 100%;
+}
+
+.progress-bar-fill {
+  transition: width 0.6s ease;
+}
+
+
+.floating-widgets {
+    position: absolute;
+    right: 50px;
+    top: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    z-index: 10;
+}
+
+.carousel-section {
+    margin-bottom: 40px;
+}
+
+.carousel-inner {
+    padding: 0 20px;
+}
+
+
+
+@media (max-width: 992px) {
+    .floating-widgets {
+        display: none;
+    }
+}
+
+
+/* Responsive Verhalten */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+}
