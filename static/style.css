@@ -66,6 +66,21 @@ nav a:hover,
 nav a:focus {
     text-decoration: underline;
 }
+/* option 1 
+nav a.active {
+    color: #1b9c4a; 
+    border-bottom: 2px solid #1b9c4a;
+    padding-bottom: 2px;
+    text-decoration: none;
+}
+*/
+nav a.active {
+    font-weight: bold;
+    background-color: #e6f4ff;
+    border-radius: 6px;
+    padding: 5px 10px;
+    text-decoration: underline;
+}
 
 .content {
     padding: 20px;

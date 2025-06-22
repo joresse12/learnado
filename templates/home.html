@@ -36,7 +36,6 @@
       </div>
       <div class="col-12">
         <div id="carouselCourses" class="carousel slide" data-bs-ride="false">
-
           <div class="carousel-inner">
             {% for chunk in ongoing|batch(3, fill_with={}) %}
               <div class="carousel-item {% if loop.first %}active{% endif %}">
@@ -45,9 +44,12 @@
                     {% if course.title %}
                       <div class="col-md-4 mb-3">
                         <div class="course-card">
-                          <div class="video-thumbnail">
-                            <i class="fas fa-play"></i>
+                          <div class="video-thumbnail" style="background-image: url('{{ course.img }}'); background-size: cover;">
+                            <a href="{{ url_for('course_detail', course_id=course.id) }}" class="video-link">
+                              <i class="fas fa-play"></i>
+                            </a>
                           </div>
+                          </a>
                           <div class="course-info">
                             <h4 class="course-title">{{ course.title }}</h4>
                             <p class="course-owner">{{ course.owner }}</p>
@@ -106,9 +108,11 @@
                     {% if course.title %}
                       <div class="col-md-4 mb-3">
                         <div class="course-card">
-                          <div class="video-thumbnail">
-                            <i class="fas fa-play"></i>
-                          </div>
+                          <a href="{{ url_for('course_detail', course_id=course.id) }}" class="video-link">
+                            <div class="video-thumbnail" style="background-image: url('{{ course.img }}'); background-size: cover;">
+                              <i class="fas fa-play"></i>
+                            </div>
+                          </a>
                           <div class="course-info">
                             <h4 class="course-title">{{ course.title }}</h4>
                             <p class="course-owner">{{ course.owner }}</p>
@@ -159,7 +163,7 @@
                       <div class="col-md-4 mb-3">
                         <div class="course-card">
                           <div class="video-thumbnail" style="background-image: url('{{ course.img }}'); background-size: cover;">
-                            <a href="https://www.youtube.com/watch?v={{ course.videoId }}" target="_blank" class="video-link">
+                            <a href="{{ url_for('course_detail', course_id=course.id) }}" class="video-link">
                               <i class="fas fa-play"></i>
                             </a>
                           </div>
@@ -211,8 +215,10 @@
                     {% if course.title %}
                       <div class="col-md-4 mb-3">
                         <div class="course-card">
-                          <div class="video-thumbnail">
-                            <i class="fas fa-play"></i>
+                          <div class="video-thumbnail" style="background-image: url('{{ course.img }}'); background-size: cover;">
+                            <a href="{{ url_for('course_detail', course_id=course.id) }}" class="video-link">
+                              <i class="fas fa-play"></i>
+                            </a>
                           </div>
                           <div class="course-info">
                             <h4 class="course-title">{{ course.title }}</h4>

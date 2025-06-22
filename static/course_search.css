@@ -1,0 +1,287 @@
+/* Haupt-Wrapper */
+.course-search-wrapper {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Sidebar links */
+.sidebar {
+  flex: 0 0 250px;
+  background: #f2fbff;
+  padding: 1.5rem;
+  border: 1px solid #c8d6e5;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.sidebar-title {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #113b67;
+}
+
+.search-input-wrapper {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.6rem 2.5rem 0.6rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #b0cbe6;
+  font-size: 1rem;
+}
+
+.search-icon {
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #326fa8;
+}
+
+.filter-btn {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  background-color: #e6f4ff;
+  border: 1px solid #c8d6e5;
+  border-radius: 10px;
+  text-align: left;
+  color: #12355b;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  transition: background 0.2s;
+}
+
+.filter-btn:hover {
+  background-color: #d0eaff;
+}
+
+
+.sort-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.sort-label {
+  font-size: 1rem;
+  color: #113b67;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sort-dropdown {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #c2d8ec;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #12355b;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+  transition: border-color 0.3s;
+}
+
+.sort-dropdown:focus {
+  outline: none;
+  border-color: #51a0e3;
+}
+
+/* Hauptinhalt – Kursliste */
+.course-main {
+  flex: 1;
+}
+
+.sort-bar {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.sort-button {
+  background-color: #e6f4ff;
+  border: 1px solid #c2d8ec;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  color: #113b67;
+}
+
+.course-results {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Einzelner Kurs */
+.course-item {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #c8d6e5;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.thumbnail-box {
+  width: 90px;
+  height: 70px;
+  background: #99c7ee;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
+.play-icon {
+  font-size: 1.6rem;
+  color: white;
+}
+
+.course-details {
+  flex: 1;
+}
+
+.course-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #12355b;
+  margin: 0 0 0.3rem;
+}
+
+.course-description {
+  font-size: 0.95rem;
+  color: #4d657a;
+  margin-bottom: 0.4rem;
+}
+
+.course-duration {
+  font-size: 0.85rem;
+  color: #888;
+  flex-direction: column-reverse;
+}
+
+/* Dropdown Filtergruppen */
+.filter-group {
+  margin-top: 1rem;
+}
+
+.filter-group label {
+  display: block;
+  font-size: 0.9rem;
+  color: #2d4c67;
+  margin-bottom: 0.3rem;
+}
+
+.filter-dropdown {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #b0cbe6;
+  background-color: #fff;
+  color: #12355b;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  transition: border 0.3s ease;
+}
+
+.filter-dropdown:focus {
+  outline: none;
+  border-color: #51a0e3;
+}
+
+/* Kurs-Metadatenzeile */
+.course-meta {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  font-size: 0.85rem;
+  margin-right: 4px;
+  color: #555;
+  margin-top: 0.5rem;
+}
+
+.course-meta span {
+  white-space: nowrap;
+}
+
+/* Pagination Controls */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.pagination-controls button {
+  padding: 0.5rem 1rem;
+  background-color: #e6f4ff;
+  border: 1px solid #bcdff9;
+  border-radius: 8px;
+  color: #12355b;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.pagination-controls button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+#pageIndicator {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #113b67;
+}
+
+
+/* Rechte Seite – Lernfortschritt 
+.progress-widget {
+  flex: 0 0 230px;
+  background-color: #ffffff;
+  border: 1px solid #b0cbe6;
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  height: fit-content;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  float: right;
+  margin-top: -100px;
+}
+
+.progress-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #0b3a5e;
+  margin-bottom: 0.5rem;
+}
+
+.progress-bar-background {
+  background-color: #d3f0d3;
+  height: 16px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+
+.progress-bar-fill {
+  background-color: #047d03;
+  height: 100%;
+  transition: width 0.4s ease-in-out;
+}
+
+.progress-text {
+  font-size: 0.95rem;
+  color: #114d28;
+  margin-top: 0.3rem;
+}
+*/

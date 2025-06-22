@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}{{ course.title }}{% endblock %}
+
+{% block head %}
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  rel="stylesheet"
+/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='course_detail.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="course-detail-container">
+  <div class="course-box">
+    <div class="course-main">
+      <h1>{{ course.title }}</h1>
+      <p class="subtitle">
+        Lernen Sie von Grund auf zu programmieren!<br>
+        Verstehen Sie die Softwareentwicklung und entdecken Sie verschiedene Karrierewege in der Technik.
+      </p>
+
+      <div class="badge-row">
+        <span class="badge">Programming</span>
+        <span class="badge">8 Stunden</span>
+        <span class="badge">Beginner</span>
+      </div>
+
+      <div class="rating-block">
+        <span class="rating-number">4,5</span>
+        <span class="stars">★ ★ ★ ★ ☆</span>
+        <p class="rating-meta">(24 Bewertungen) 100 Teilnehmer:innen</p>
+      </div>
+
+      <p class="author">Erstellt von <a href="#">Amr Aldarwish</a></p>
+
+      <h2>Kursbeschreibung</h2>
+      <p class="description">
+        In diesem Kurs erhalten Teilnehmer:innen eine praxisnahe Einführung in die Grundlagen der Programmierung.
+        Ohne Vorkenntnisse vorauszusetzen, lernen sie Schritt für Schritt, wie Computerprogramme strukturiert sind,
+        wie sie geschrieben werden und wie man einfache Aufgaben automatisieren kann.
+      </p>
+    </div>
+
+    <div class="course-side">
+      <div class="video-placeholder" style="background-image: url('{{ url_for('static', filename=course.img.replace('static/', '')) }}'); background-size: cover;">
+        <div class="play-icon">▶</div>
+      </div>
+      <h3>Inhaltsverzeichnis</h3>
+      <ol class="toc">
+        <li>Variablen und Datentypen</li>
+        <li>Kontrollstrukturen</li>
+        <li>Funktionen und Modularisierung</li>
+        <li>Datenstrukturen</li>
+        <li>Fehlersuche und Debugging</li>
+      </ol>
+
+      <!-- Neue Buttons -->
+        <div class="course-buttons">
+          <a href="#" class="btn-green">Kursvorschau</a>
+          <a href="#" class="btn-green">Kurs Starten</a>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

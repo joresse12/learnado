@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% block title %}Kurse suchen{% endblock %}
+
+{% block head %}
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="{{ url_for('static', filename='course_search.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="course-search-wrapper">
+
+  <!-- Sidebar Dropdowns -->
+    <aside class="sidebar">
+      <h2 class="sidebar-title">Kurse suchen</h2>
+      <div class="search-input-wrapper">
+        <input type="text" placeholder="Suchen" class="search-input" />
+        <i class="fas fa-search search-icon"></i>
+      </div>
+
+      <div class="filter-group">
+        <label for="filter-kategorie">Kategorie</label>
+        <select id="filter-kategorie" class="filter-dropdown">
+          <option>Alle</option>
+          <option>Programmieren</option>
+          <option>Management</option>
+          <option>Datenanalyse</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="filter-rolle">Rolle</label>
+        <select id="filter-rolle" class="filter-dropdown">
+          <option>Alle</option>
+          <option>Einsteiger</option>
+          <option>Fortgeschrittene</option>
+          <option>Experten</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="filter-format">Format</label>
+        <select id="filter-format" class="filter-dropdown">
+          <option>Alle</option>
+          <option>Video</option>
+          <option>Live-Webinar</option>
+          <option>Vor-Ort-Workshop</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="filter-sprache">Sprache</label>
+        <select id="filter-sprache" class="filter-dropdown">
+          <option>Alle</option>
+          <option>Deutsch</option>
+          <option>Englisch</option>
+        </select>
+      </div>
+    </aside>
+
+
+      <!-- Kursliste -->
+      <main class="course-main">
+        <div class="sort-bar">
+  <label for="sortieren" class="sort-label">
+    <i class="fas fa-sort-amount-down-alt"></i> Sortiere nach:
+  </label>
+  <select id="sortieren" class="sort-dropdown">
+    <option>Beliebtheit</option>
+    <option>Neueste</option>
+    <option>Alphabetisch (A-Z)</option>
+    <option>Dauer (aufsteigend)</option>
+    <option>Dauer (absteigend)</option>
+  </select>
+</div>
+
+        <div class="course-results">
+          {% for course in courses %}
+          <!-- Kurs-Eintrag -->
+            <div class="course-item">
+              <div class="thumbnail-box" style="background-image: url('{{ course.img }}'); background-size: cover;">
+                <a href="{{ url_for('course_detail', course_id=course.id) }}" class="video-link">
+                  <i class="fas fa-play"></i>
+                </a>
+              </div>
+              <div class="course-details">
+                <h3 class="course-title">{{ course.title }}</h3>
+                <p class="course-description">{{course.short_description}}</p>
+                <div class="course-meta">
+                  <span><i class="fas fa-signal"></i> Anfänger</span>
+                    <span><i class="fas fa-chalkboard-teacher"></i> Video</span>
+                    <span><i class="far fa-clock"></i> 15 Std.</span>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="pagination-controls">
+          <button onclick="loadCourses(currentPage - 1)" id="prevBtn">❮ Vorherige</button>
+          <span id="pageIndicator"></span>
+          <button onclick="loadCourses(currentPage + 1)" id="nextBtn">Nächste ❯</button>
+        </div>
+      </main>
+
+      <!-- Lernfortschritt 
+      <aside class="progress-widget">
+        <h3 class="progress-title">Stark!</h3>
+        <div class="progress-bar-background">
+          <div class="progress-bar-fill" style="width: {{ learn_progress or 65 }}%;"></div>
+        </div>
+        <p class="progress-text">Du hast {{ learn_progress or 65 }}% deines Lernziels erreicht!</p>
+      </aside>
+    -->
+</div>
+<script>
+  let currentPage = 1;
+  const perPage = 6;
+
+  async function loadCourses(page = 1) {
+    const res = await fetch(`/api/courses?page=${page}&per_page=${perPage}`);
+    const data = await res.json();
+
+    const container = document.querySelector(".course-results");
+    const indicator = document.getElementById("pageIndicator");
+
+    container.innerHTML = "";
+    data.courses.forEach(course => {
+      container.innerHTML += `
+        <div class="course-item">
+          <div class="thumbnail-box" style="background-image: url('${course.img}'); background-size: cover;">
+            <a href="/kurs/${course.id}" class="video-link"><i class="fas fa-play"></i></a>
+          </div>
+          <div class="course-details">
+            <h3 class="course-title">${course.title}</h3>
+            <p class="course-description">${course.short_description || ''}</p>
+            <span class="course-duration">15 Std.</span>
+          </div>
+        </div>`;
+    });
+
+    currentPage = data.page;
+    indicator.textContent = `Seite ${data.page} von ${data.total_pages}`;
+
+    document.getElementById("prevBtn").disabled = (data.page === 1);
+    document.getElementById("nextBtn").disabled = (data.page === data.total_pages);
+  }
+
+  window.addEventListener("DOMContentLoaded", () => loadCourses());
+</script>
+
+{% endblock %}

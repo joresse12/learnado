@@ -186,3 +186,28 @@ h3:first-of-type {
   gap: 20px;
   justify-content: flex-start;
 }
+
+/* course detail */
+.course-detail img {
+  border-radius: 12px;
+  max-height: 300px;
+  object-fit: cover;
+}
+
+.course-detail {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+.progress-bar-container {
+  background-color: #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 20px;
+}
+
+.progress-bar {
+  height: 100%;
+  transition: width 0.4s ease-in-out;
+}
