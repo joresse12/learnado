@@ -17,7 +17,7 @@ body {
     min-height: 80px;
     gap: 10px; /* Abstand zwischen Logo und Navigation */
     background-color:#FFFFFF;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 8px rgba(246, 3, 3, 0.05);
     /*background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.6),rgba(255, 255, 255, 0));*/
     z-index: 1000;
 }
@@ -164,6 +164,114 @@ nav a.active {
 
 .carousel-inner {
     padding: 0 20px;
+}
+
+#ai-assistant-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #1b9c4a;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 25px;
+  font-weight: 500;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
+  z-index: 9999;
+}
+#ai-assistant-button:hover {
+  background: #14893a;
+}
+
+#ai-chat-box {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 300px;
+  background: white;
+  border: 1px solid #d8e7f0;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  display: none;
+  flex-direction: column;
+  z-index: 9999;
+}
+#ai-chat-box.open {
+  display: flex;
+}
+
+.ai-header {
+  background: #1b9c4a;
+  color: white;
+  padding: 10px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ai-body {
+  padding: 10px;
+  height: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ai-footer {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #eee;
+  gap: 6px;
+}
+
+#ai-input {
+  flex: 1;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.ai-footer button {
+  background: #1b9c4a;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.ai-msg {
+  padding: 8px 10px;
+  border-radius: 8px;
+  max-width: 90%;
+}
+.ai-user {
+  align-self: flex-end;
+  background: #d1f0dc;
+}
+.ai-bot {
+  align-self: flex-start;
+  background: #f1f1f1;
+}
+
+.ai-quick {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.ai-quick button {
+  background: #eff8f0;
+  border: 1px solid #cce5da;
+  border-radius: 6px;
+  padding: 5px 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-align: left;
 }
 
 
