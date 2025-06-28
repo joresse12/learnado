@@ -2,63 +2,68 @@
 {% block title %}{{ course.title }}{% endblock %}
 
 {% block head %}
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  rel="stylesheet"
-/>
   <link rel="stylesheet" href="{{ url_for('static', filename='course_detail.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 {% endblock %}
 
 {% block content %}
 <div class="course-detail-container">
   <div class="course-box">
+    <!-- Hauptbereich -->
     <div class="course-main">
       <h1>{{ course.title }}</h1>
+
       <p class="subtitle">
-        Lernen Sie von Grund auf zu programmieren!<br>
-        Verstehen Sie die Softwareentwicklung und entdecken Sie verschiedene Karrierewege in der Technik.
+        {{ course.short_description or "Dieser Kurs bietet einen praktischen Einstieg in das gewählte Thema." }}
       </p>
 
       <div class="badge-row">
-        <span class="badge">Programming</span>
-        <span class="badge">8 Stunden</span>
-        <span class="badge">Beginner</span>
+        <span class="badge">{{ course.category|capitalize or 'Kurs' }}</span>
+        <span class="badge">⏱️ {{ course.duration or "8 Std." }}</span>
+        <span class="badge">🧩 {{ course.level or "Alle Niveaus" }}</span>
       </div>
 
       <div class="rating-block">
         <span class="rating-number">4,5</span>
         <span class="stars">★ ★ ★ ★ ☆</span>
-        <p class="rating-meta">(24 Bewertungen) 100 Teilnehmer:innen</p>
+        <p class="rating-meta">(24 Bewertungen) • 100+ Teilnehmer:innen</p>
       </div>
 
-      <p class="author">Erstellt von <a href="#">Amr Aldarwish</a></p>
+      <p class="author">
+        Erstellt von <strong>{{ course.owner or "unbekannt" }}</strong>
+      </p>
 
       <h2>Kursbeschreibung</h2>
       <p class="description">
-        In diesem Kurs erhalten Teilnehmer:innen eine praxisnahe Einführung in die Grundlagen der Programmierung.
-        Ohne Vorkenntnisse vorauszusetzen, lernen sie Schritt für Schritt, wie Computerprogramme strukturiert sind,
-        wie sie geschrieben werden und wie man einfache Aufgaben automatisieren kann.
+        {{ course.description or "Eine detaillierte Beschreibung dieses Kurses folgt in Kürze. In der Zwischenzeit kannst du bereits loslegen und lernen!" }}
       </p>
     </div>
 
+    <!-- Seitenbereich -->
     <div class="course-side">
-      <div class="video-placeholder" style="background-image: url('{{ url_for('static', filename=course.img.replace('static/', '')) }}'); background-size: cover;">
+      <div class="video-placeholder" style="background-image: url('{{ url_for('static', filename=course.image.replace('static/', '')) }}'); background-size: cover;">
         <div class="play-icon">▶</div>
       </div>
-      <h3>Inhaltsverzeichnis</h3>
+
+      <h3>Kapitelübersicht</h3>
       <ol class="toc">
-        <li>Variablen und Datentypen</li>
-        <li>Kontrollstrukturen</li>
-        <li>Funktionen und Modularisierung</li>
-        <li>Datenstrukturen</li>
-        <li>Fehlersuche und Debugging</li>
+        {% if course.chapters %}
+          {% for ch in course.chapters %}
+            <li>{{ ch.title }} <small>({{ ch.duration }})</small></li>
+          {% endfor %}
+        {% else %}
+          <li>Einführung</li>
+          <li>Grundlagen</li>
+          <li>Praxisbeispiele</li>
+          <li>Zusammenfassung</li>
+        {% endif %}
       </ol>
 
-      <!-- Neue Buttons -->
-        <div class="course-buttons">
-          <a href="#" class="btn-green">Kursvorschau</a>
-          <a href="#" class="btn-green">Kurs Starten</a>
-        </div>
+      <div class="course-buttons">
+        <a href="{{ url_for('course_learn', course_id=course.id) }}" class="btn-green">
+          <i class="fas fa-play-circle"></i> Kurs starten
+        </a>
+      </div>
     </div>
   </div>
 </div>

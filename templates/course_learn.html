@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+{% block title %}Lernen – {{ course.title }}{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='course_learn.css') }}">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block content %}
+<div class="learning-layout">
+
+  <!-- Sidebar -->
+  <aside class="chapter-sidebar">
+    <header class="learning-header">
+      <a href="{{ url_for('course_detail', course_id=course.id) }}" class="back-link">← Zurück zum Kurs</a>
+      <h3>Kursinhalte</h3>
+    </header>
+    <ol class="chapter-list">
+      {% for chapter in chapters %}
+        <li>
+          <span class="chapter-title">{{ chapter.title }}</span>
+          <span class="chapter-duration">{{ chapter.duration }}</span>
+        </li>
+      {% endfor %}
+    </ol>
+  </aside>
+
+  <!-- Hauptinhalt -->
+  <div class="learning-main">
+    
+
+    <div class="video-player">
+      {% if course.videoId %}
+        <iframe
+          id="youtubePlayer"
+          width="100%" height="480"
+          src="https://www.youtube.com/embed/{{ course.videoId }}?enablejsapi=1&rel=0"
+          frameborder="0" allowfullscreen>
+        </iframe>
+      {% else %}
+        <video id="videoElement" controls poster="{{ url_for('static', filename=course.image.replace('static/', '')) }}">
+          <source src="{{ course.video_url or '' }}" type="video/mp4">
+          Dein Browser unterstützt kein HTML5 Video.
+        </video>
+      {% endif %}
+    </div>
+
+    <h2 class="lesson-title">{{ course.title }}</h2>
+    <div class="lesson-meta">
+      <p><i class="fas fa-user"></i> {{ course.owner }}</p>
+      {% set hours = course.duration_minutes // 60 %}
+      {% set minutes = course.duration_minutes % 60 %}
+      <p><i class="far fa-clock"></i> 
+        {% if hours > 0 %}{{ hours }} Std.{% endif %}
+        {% if minutes > 0 %} {{ minutes }} Min.{% endif %}
+      </p>
+
+    </div>
+
+    <!-- Tabs -->
+    <div class="learning-tabs">
+      <ul class="tab-nav">
+        <li class="active" onclick="switchTab(event, 'desc')">Beschreibung</li>
+        <li onclick="switchTab(event, 'notes')">Notizen</li>
+        <li onclick="switchTab(event, 'comments')">Kommentare</li>
+      </ul>
+      <div class="tab-content" id="desc">
+        <p>{{ course.short_description }}</p>
+      </div>
+      <div class="tab-content hidden" id="notes">
+        <textarea id="notes-area" placeholder="Deine Notizen hier..."></textarea>
+      </div>
+      <div class="tab-content hidden" id="comments">
+        <p>Kommentarfunktion kommt bald 🚧</p>
+      </div>
+    </div>
+
+    <!-- Fortschrittsleiste -->
+    <div class="learning-footer">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressBar" style="width: {{ course.progress or 0 }}%;">
+          {{ course.progress or 0 }}%
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Progress & Tabs JS -->
+<script>
+  function switchTab(evt, tabId) {
+    document.querySelectorAll('.tab-nav li').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+    evt.target.classList.add('active');
+    document.getElementById(tabId).classList.remove('hidden');
+  }
+
+  // Notizen
+  const noteKey = "notes_course_{{ course.id }}";
+  const notesArea = document.getElementById("notes-area");
+  if (notesArea) {
+    notesArea.value = localStorage.getItem(noteKey) || "";
+    notesArea.addEventListener("input", () => {
+      localStorage.setItem(noteKey, notesArea.value);
+    });
+  }
+
+  // Fortschritt – live aktualisieren
+  const progressBar = document.getElementById('progressBar');
+  const video = document.querySelector('video') || document.querySelector('iframe');
+  const courseId = {{ course.id }};
+  let lastSent = 0;
+
+  function updateProgressBar(value) {
+    const percent = Math.min(Math.max(value, 0), 100);
+    progressBar.style.width = percent + "%";
+    progressBar.textContent = percent + "%";
+
+    if (percent < 30) {
+      progressBar.style.backgroundColor = "red";
+    } else if (percent < 50) {
+      progressBar.style.backgroundColor = "orange";
+    } else {
+      progressBar.style.backgroundColor = "green";
+    }
+
+    if (Math.abs(percent - lastSent) >= 5) {
+      fetch(`/api/progress/${courseId}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ progress: percent })
+      });
+      lastSent = percent;
+    }
+  }
+
+  // Lokales Video
+  const localVideo = document.getElementById("videoElement");
+  if (localVideo) {
+    localVideo.addEventListener("timeupdate", () => {
+      const percent = Math.floor((localVideo.currentTime / localVideo.duration) * 100);
+      if (!isNaN(percent)) {
+        updateProgressBar(percent);
+      }
+    });
+  }
+
+  // YouTube
+  function onYouTubeIframeAPIReady() {
+    const yt = new YT.Player('youtubePlayer', {
+      events: {
+        onReady: () => {
+          setInterval(() => {
+            const duration = yt.getDuration();
+            const current = yt.getCurrentTime();
+            if (duration > 0) {
+              const percent = Math.floor((current / duration) * 100);
+              updateProgressBar(percent);
+            }
+          }, 4000);
+        }
+      }
+    });
+  }
+
+  // YouTube-API laden
+  if (!localVideo) {
+    const tag = document.createElement("script");
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(tag);
+    window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
+  }
+
+  const storedProgress = {{ course.progress or 0 }};
+  updateProgressBar(storedProgress);
+
+  if (video && video.tagName === "VIDEO") {
+    video.addEventListener("timeupdate", () => {
+      const percent = Math.round((video.currentTime / video.duration) * 100);
+      updateProgressBar(percent);
+      sendProgress(percent);
+    });
+  }
+</script>
+{% endblock %}

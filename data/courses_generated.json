@@ -1,0 +1,596 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "title": "Einführung in Machine Learning",
+      "short_description": "Beschreibung für Einführung in Machine Learning",
+      "owner": "Felix Schneider",
+      "image": "static/images/kurse/machine_learning.jpg",
+      "type": "community",
+      "category": "Datenanalyse",
+      "level": "fortgeschritten",
+      "format": "vor-ort-workshop",
+      "language": "englisch",
+      "duration_minutes": 630,
+      "created_at": "2024-12-03",
+      "progress": 0,
+      "videoId": null,
+      "video_url": "/data/static/videos/1.mp4",
+      "chapters": [
+        {
+          "title": "Einführung",
+          "duration": "5:00"
+        },
+        {
+          "title": "Kapitel 1",
+          "duration": "10:00"
+        },
+        {
+          "title": "Kapitel 2",
+          "duration": "8:30"
+        },
+        {
+          "title": "Zusammenfassung",
+          "duration": "4:20"
+        }
+      ],
+      "rating": 4.4,
+      "votes": 191
+    },
+    {
+      "id": 2,
+      "title": "Projektmanagement",
+      "short_description": "Beschreibung für Projektmanagement",
+      "owner": "Anna Becker",
+      "image": "static/images/kurse/project_management_skill.jpg",
+      "type": "community",
+      "category": "Datenanalyse",
+      "level": "einsteiger",
+      "format": "video",
+      "language": "englisch",
+      "duration_minutes": 357,
+      "created_at": "2024-12-06",
+      "progress": 0,
+      "videoId": null,
+      "video_url": "/data/static/videos/2.mp4",
+      "chapters": [
+        {
+          "title": "Einführung",
+          "duration": "5:00"
+        },
+        {
+          "title": "Kapitel 1",
+          "duration": "10:00"
+        },
+        {
+          "title": "Kapitel 2",
+          "duration": "8:30"
+        },
+        {
+          "title": "Zusammenfassung",
+          "duration": "4:20"
+        }
+      ],
+      "rating": 4.9,
+      "votes": 111
+    },
+    {
+      "id": 3,
+      "title": "Cybersecurity 1",
+      "short_description": "Beschreibung für Cybersecurity 1",
+      "owner": "Jonas Weber",
+      "image": "static/images/kurse/CyberSecurity.png",
+      "type": "community",
+      "category": "Datenanalyse",
+      "level": "experte",
+      "format": "vor-ort-workshop",
+      "language": "deutsch",
+      "duration_minutes": 739,
+      "created_at": "2025-04-08",
+      "progress": 0,
+      "videoId": null,
+      "video_url": "/data/static/videos/3.mp4",
+      "chapters": [
+        {
+          "title": "Einführung",
+          "duration": "5:00"
+        },
+        {
+          "title": "Kapitel 1",
+          "duration": "10:00"
+        },
+        {
+          "title": "Kapitel 2",
+          "duration": "8:30"
+        },
+        {
+          "title": "Zusammenfassung",
+          "duration": "4:20"
+        }
+      ],
+      "rating": 4.4,
+      "votes": 269
+    },
+    {
+      "id": 4,
+      "title": "Supply Chain Management",
+      "short_description": "Beschreibung für Supply Chain Management",
+      "owner": "Mira Solvane",
+      "image": "static/images/kurse/SupplyChainManagement.png",
+      "type": "community",
+      "category": "Technologie",
+      "level": "einsteiger",
+      "format": "video",
+      "language": "englisch",
+      "duration_minutes": 702,
+      "created_at": "2024-12-12",
+      "progress": 0,
+      "videoId": null,
+      "video_url": "/data/static/videos/4.mp4",
+      "chapters": [
+        {
+          "title": "Einführung",
+          "duration": "5:00"
+        },
+        {
+          "title": "Kapitel 1",
+          "duration": "10:00"
+        },
+        {
+          "title": "Kapitel 2",
+          "duration": "8:30"
+        },
+        {
+          "title": "Zusammenfassung",
+          "duration": "4:20"
+        }
+      ],
+      "rating": 4.7,
+      "votes": 265
+    },
+    {
+      "id": 5,
+      "title": "Projektcontrolling und Erfolgsmessung",
+      "short_description": "Beschreibung für Projektcontrolling und Erfolgsmessung",
+      "owner": "Kairos Denvin",
+      "image": "static/images/kurse/Project_Control_Strategies.jpg",
+      "type": "community",
+      "category": "Datenanalyse",
+      "level": "experte",
+      "format": "live-webinar",
+      "language": "englisch",
+      "duration_minutes": 504,
+      "created_at": "2024-08-07",
+      "progress": 0,
+      "videoId": null,
+      "video_url": "/data/static/videos/5.mp4",
+      "chapters": [
+        {
+          "title": "Einführung",
+          "duration": "5:00"
+        },
+        {
+          "title": "Kapitel 1",
+          "duration": "10:00"
+        },
+        {
+          "title": "Kapitel 2",
+          "duration": "8:30"
+        },
+        {
+          "title": "Zusammenfassung",
+          "duration": "4:20"
+        }
+      ],
+      "rating": 4.3,
+      "votes": 182
+    },
+    {
+      "id": 6,
+      "title": "Agiles Arbeiten",
+      "short_description": "Beschreibung für Agiles Arbeiten",
+      "owner": "Lea Hoffmann",
+      "image": "static/images/kurse/AgilesArbeiten.png",
+      "type": "community",
+      "category": "Datenanalyse",
+      "level": "fortgeschritten",
+      "format": "live-webinar",
+      "language": "englisch",
+      "duration_minutes": 578,
+      "created_at": "2025-01-29",
+      "progress": 0,
+      "videoId": null,
+      "video_url": "/data/static/videos/6.mp4",
+      "chapters": [
+        {
+          "title": "Einführung",
+          "duration": "5:00"
+        },
+        {
+          "title": "Kapitel 1",
+          "duration": "10:00"
+        },
+        {
+          "title": "Kapitel 2",
+          "duration": "8:30"
+        },
+        {
+          "title": "Zusammenfassung",
+          "duration": "4:20"
+        }
+      ],
+      "rating": 4.5,
+      "votes": 46
+    },
+    {
+      "id": 7,
+      "title": "Datenanalyse mit Python",
+      "short_description": "Beschreibung für Datenanalyse mit Python",
+      "owner": "Thomas Brandt",
+      "image": "static/images/kurse/DatenanalysePython.png",
+      "type": "community",
+      "category": "Management",
+      "level": "experte",
+      "format": "live-webinar",
+      "language": "deutsch",
+      "duration_minutes": 581,
+      "created_at": "2025-05-14",
+      "progress": 0,
+      "videoId": null,
+      "video_url": "/data/static/videos/7.mp4",
+      "chapters": [
+        {
+          "title": "Einführung",
+          "duration": "5:00"
+        },
+        {
+          "title": "Kapitel 1",
+          "duration": "10:00"
+        },
+        {
+          "title": "Kapitel 2",
+          "duration": "8:30"
+        },
+        {
+          "title": "Zusammenfassung",
+          "duration": "4:20"
+        }
+      ],
+      "rating": 4.3,
+      "votes": 241
+    },
+    {
+      "id": 8,
+      "title": "Cloud Computing Grundlagen",
+      "short_description": "Beschreibung für Cloud Computing Grundlagen",
+      "owner": "Clara Vogel",
+      "image": "static/images/kurse/CloudComputing.png",
+      "type": "community",
+      "category": "Management",
+      "level": "experte",
+      "format": "live-webinar",
+      "language": "englisch",
+      "duration_minutes": 624,
+      "created_at": "2025-06-06",
+      "progress": 0,
+      "videoId": null,
+      "video_url": "/data/static/videos/8.mp4",
+      "chapters": [
+        {
+          "title": "Einführung",
+          "duration": "5:00"
+        },
+        {
+          "title": "Kapitel 1",
+          "duration": "10:00"
+        },
+        {
+          "title": "Kapitel 2",
+          "duration": "8:30"
+        },
+        {
+          "title": "Zusammenfassung",
+          "duration": "4:20"
+        }
+      ],
+      "rating": 4.4,
+      "votes": 172
+    },
+    {
+      "id": 9,
+      "title": "Digitale Transformation",
+      "short_description": "Beschreibung für Digitale Transformation",
+      "owner": "David König",
+      "image": "static/images/kurse/DigitaleTransformation.png",
+      "type": "community",
+      "category": "Technologie",
+      "level": "fortgeschritten",
+      "format": "live-webinar",
+      "language": "deutsch",
+      "duration_minutes": 770,
+      "created_at": "2025-04-18",
+      "progress": 0,
+      "videoId": null,
+      "video_url": "/data/static/videos/9.mp4",
+      "chapters": [
+        {
+          "title": "Einführung",
+          "duration": "5:00"
+        },
+        {
+          "title": "Kapitel 1",
+          "duration": "10:00"
+        },
+        {
+          "title": "Kapitel 2",
+          "duration": "8:30"
+        },
+        {
+          "title": "Zusammenfassung",
+          "duration": "4:20"
+        }
+      ],
+      "rating": 4.6,
+      "votes": 250
+    },
+    {
+      "id": 10,
+      "title": "IT-Projektmanagement",
+      "short_description": "Beschreibung für IT-Projektmanagement",
+      "owner": "Sophie Neumann",
+      "image": "static/images/kurse/ITProjektmanagement.png",
+      "type": "community",
+      "category": "Datenanalyse",
+      "level": "einsteiger",
+      "format": "video",
+      "language": "englisch",
+      "duration_minutes": 360,
+      "created_at": "2024-12-27",
+      "progress": 0,
+      "videoId": null,
+      "video_url": "/data/static/videos/10.mp4",
+      "chapters": [
+        {
+          "title": "Einführung",
+          "duration": "5:00"
+        },
+        {
+          "title": "Kapitel 1",
+          "duration": "10:00"
+        },
+        {
+          "title": "Kapitel 2",
+          "duration": "8:30"
+        },
+        {
+          "title": "Zusammenfassung",
+          "duration": "4:20"
+        }
+      ],
+      "rating": 4.4,
+      "votes": 125
+    },
+    {
+      "id": 1001,
+      "title": "Python Tutorial für Anfänger",
+      "short_description": "Python Tutorial für Anfänger Beschreibung",
+      "owner": "Programming with Mosh",
+      "image": "static/images/kurse/python_anfang.jpg",
+      "type": "empfohlen",
+      "category": "Technologie",
+      "level": "fortgeschritten",
+      "format": "video",
+      "language": "englisch",
+      "duration_minutes": 371,
+      "created_at": "2025-05-26",
+      "progress": 0,
+      "videoId": "_uQrJ0TkZlc",
+      "video_url": null,
+      "chapters": [
+        {
+          "title": "Einführung",
+          "duration": "5:00"
+        },
+        {
+          "title": "Kapitel 1",
+          "duration": "10:00"
+        },
+        {
+          "title": "Kapitel 2",
+          "duration": "8:30"
+        },
+        {
+          "title": "Zusammenfassung",
+          "duration": "4:20"
+        }
+      ],
+      "rating": 4.5,
+      "votes": 99
+    },
+    {
+      "id": 1002,
+      "title": "Machine Learning Crash Course",
+      "short_description": "Machine Learning Crash Course Beschreibung",
+      "owner": "Google Developers",
+      "image": "static/images/kurse/machine_learning_crash.jpg",
+      "type": "empfohlen",
+      "category": "Technologie",
+      "level": "experte",
+      "format": "video",
+      "language": "deutsch",
+      "duration_minutes": 403,
+      "created_at": "2025-05-03",
+      "progress": 0,
+      "videoId": "GwIo3gDZCVQ",
+      "video_url": null,
+      "chapters": [
+        {
+          "title": "Einführung",
+          "duration": "5:00"
+        },
+        {
+          "title": "Kapitel 1",
+          "duration": "10:00"
+        },
+        {
+          "title": "Kapitel 2",
+          "duration": "8:30"
+        },
+        {
+          "title": "Zusammenfassung",
+          "duration": "4:20"
+        }
+      ],
+      "rating": 4.4,
+      "votes": 160
+    },
+    {
+      "id": 1003,
+      "title": "JavaScript Grundlagen in 60 Minuten",
+      "short_description": "JavaScript Grundlagen in 60 Minuten Beschreibung",
+      "owner": "Traversy Media",
+      "image": "static/images/kurse/javascript_grundlage.jpg",
+      "type": "empfohlen",
+      "category": "Technologie",
+      "level": "einsteiger",
+      "format": "video",
+      "language": "deutsch",
+      "duration_minutes": 219,
+      "created_at": "2025-06-18",
+      "progress": 0,
+      "videoId": "W6NZfCO5SIk",
+      "video_url": null,
+      "chapters": [
+        {
+          "title": "Einführung",
+          "duration": "5:00"
+        },
+        {
+          "title": "Kapitel 1",
+          "duration": "10:00"
+        },
+        {
+          "title": "Kapitel 2",
+          "duration": "8:30"
+        },
+        {
+          "title": "Zusammenfassung",
+          "duration": "4:20"
+        }
+      ],
+      "rating": 4.5,
+      "votes": 21
+    },
+    {
+      "id": 1004,
+      "title": "HTML & CSS Komplettkurs",
+      "short_description": "HTML & CSS Komplettkurs Beschreibung",
+      "owner": "The Net Ninja",
+      "image": "static/images/kurse/html_css_komplett.jpg",
+      "type": "empfohlen",
+      "category": "Technologie",
+      "level": "experte",
+      "format": "video",
+      "language": "deutsch",
+      "duration_minutes": 468,
+      "created_at": "2024-09-26",
+      "progress": 0,
+      "videoId": "mU6anWqZJcc",
+      "video_url": null,
+      "chapters": [
+        {
+          "title": "Einführung",
+          "duration": "5:00"
+        },
+        {
+          "title": "Kapitel 1",
+          "duration": "10:00"
+        },
+        {
+          "title": "Kapitel 2",
+          "duration": "8:30"
+        },
+        {
+          "title": "Zusammenfassung",
+          "duration": "4:20"
+        }
+      ],
+      "rating": 4.3,
+      "votes": 278
+    },
+    {
+      "id": 1005,
+      "title": "React JS Tutorial",
+      "short_description": "React JS Tutorial Beschreibung",
+      "owner": "Academind",
+      "image": "static/images/kurse/reactJs_tutorial.jpg",
+      "type": "empfohlen",
+      "category": "Technologie",
+      "level": "experte",
+      "format": "video",
+      "language": "englisch",
+      "duration_minutes": 388,
+      "created_at": "2025-05-04",
+      "progress": 0,
+      "videoId": "bMknfKXIFA8",
+      "video_url": null,
+      "chapters": [
+        {
+          "title": "Einführung",
+          "duration": "5:00"
+        },
+        {
+          "title": "Kapitel 1",
+          "duration": "10:00"
+        },
+        {
+          "title": "Kapitel 2",
+          "duration": "8:30"
+        },
+        {
+          "title": "Zusammenfassung",
+          "duration": "4:20"
+        }
+      ],
+      "rating": 4.2,
+      "votes": 242
+    },
+    {
+      "id": 1006,
+      "title": "SQL Grundlagen",
+      "short_description": "SQL Grundlagen Beschreibung",
+      "owner": "freeCodeCamp.org",
+      "image": "static/images/kurse/sql_grundlage.jpg",
+      "type": "empfohlen",
+      "category": "Technologie",
+      "level": "experte",
+      "format": "video",
+      "language": "deutsch",
+      "duration_minutes": 361,
+      "created_at": "2024-08-09",
+      "progress": 0,
+      "videoId": "HXV3zeQKqGY",
+      "video_url": null,
+      "chapters": [
+        {
+          "title": "Einführung",
+          "duration": "5:00"
+        },
+        {
+          "title": "Kapitel 1",
+          "duration": "10:00"
+        },
+        {
+          "title": "Kapitel 2",
+          "duration": "8:30"
+        },
+        {
+          "title": "Zusammenfassung",
+          "duration": "4:20"
+        }
+      ],
+      "rating": 4.6,
+      "votes": 245
+    }
+  ]
+}

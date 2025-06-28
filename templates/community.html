@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Community{% endblock %}
+{% block content %}
+<div class="community-wrapper">
+  <h1>Community</h1>
+  <p>Hier findest du alle Kurse, die von unserer Community erstellt wurden.</p>
+
+  <!-- Suchleiste 
+  <div class="search-bar">
+    <input type="text" placeholder="Suche nach Kursen, Themen oder Schlagwörtern...">
+    <i class="fas fa-search"></i>
+  </div>-->
+
+  <!-- Kursliste 
+  <section class="course-list">
+    {% for course in courses %}
+      <div class="course-card">
+        <div class="video-thumbnail" style="background-image: url('{{ course.image }}'); background-size: cover;">
+          <a href="{{ url_for('course_detail', course_id=course.id) }}" class="video-link">
+            <i class="fas fa-play"></i>
+          </a>
+        </div>
+        <h3>{{ course.title }}</h3>
+        <p>{{ course.description }}</p>
+      </div>
+    {% endfor %}
+  </section>
+</div>-->
+{% endblock %}

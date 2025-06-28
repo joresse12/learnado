@@ -78,11 +78,17 @@
 }
 
 .sort-dropdown {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
+  padding: 0.5rem 1.9rem;
+  border-radius: 5px;
   border: 1px solid #c2d8ec;
-  border-radius: 8px;
+  font-size: 16px;
+  appearance: none;         /* Entfernt das Standard-Dropdown-Styling */
   background-color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='0,0 140,0 70,70' fill='%23999'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px;
+  box-sizing: border-box;
   color: #12355b;
   box-shadow: 0 1px 2px rgba(0,0,0,0.06);
   transition: border-color 0.3s;
@@ -183,15 +189,18 @@
 }
 
 .filter-dropdown {
-  width: 100%;
-  padding: 0.6rem 0.8rem;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: 1px solid #b0cbe6;
+ width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: 1px solid #c2d8ec;
+  font-size: 16px;
+  appearance: none;         /* Entfernt das Standard-Dropdown-Styling */
   background-color: #fff;
-  color: #12355b;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-  transition: border 0.3s ease;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='0,0 140,0 70,70' fill='%23999'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px;
+  box-sizing: border-box;
 }
 
 .filter-dropdown:focus {
