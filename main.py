@@ -1,117 +1,143 @@
-from flask import Flask, render_template
-from data import courses, community, empfohlen, started, youtube_courses
+from flask import Flask, render_template, jsonify, request
+import json
 
 app = Flask(__name__)
 
+# Fortschrittszustand im Speicher (später DB)
+user_progress = {}
+
+# Kurse aus JSON laden
+def load_courses():
+    with open("data/courses_generated.json", encoding="utf-8") as f:
+        data = json.load(f)
+        return data["courses"]  # 👈 Achte auf den richtigen Schlüssel
+
+
 @app.route("/")
 def home():
-    courses = [
-        {"id": 1, "title": "Einführung in Machine Learning","short_description":"Ein praxisnaher Einstieg in die Grundlagen des maschinellen Lernens inklusive Klassifikation, Regression und Clustering.","owner": "Felix Schneider", "img": "static/images/kurse/machine_learning.jpg"},
-        {"id": 2, "title": "Projektmanagement","short_description":"Erfahre die Grundlagen des Projektmanagements von Planung und Organisation bis hin zu Risikomanagement und erfolgreicher Teamführung.", "owner": "Anna Becker","img": "static/images/kurse/project_management_skill.jpg"},
-        {"id": 3, "title": "Cybersecurity 1","short_description":"Lerne die wichtigsten Methoden zum Schutz von IT-Systemen und Netzwerken gegen Cyberangriffe","owner": "Jonas Weber", "img": "static/images/kurse/CyberSecurity.png"},
-        {"id": 4, "title": "Supply Chain Management","short_description":"Verstehe die Abläufe in Lieferketten und lerne, wie du Effizienz und Nachhaltigkeit steigerst.","owner": "Mira Solvane", "img": "static/images/kurse/SupplyChainManagement.png"},
-        {"id": 5, "title":  "Projektcontrolling und Erfolgsmessung","short_description":"Erlerne Techniken zur Überwachung von Projekten und zur Bewertung ihres Erfolgs anhand von Kennzahlen.","owner": "Kairos Denvin", "img": "static/images/kurse/Project_Control_Strategies.jpg"},
-        {"id": 6,"title": "Agiles Arbeiten","short_description": "Lerne agile Methoden wie Scrum und Kanban kennen und verbessere die Zusammenarbeit in Teams.","owner": "Lea Hoffmann","img": "static/images/kurse/AgilesArbeiten.png"},
-        {"id": 7,"title": "Datenanalyse mit Python","short_description": "Entdecke, wie du mit Python Daten effizient analysierst und visualisierst.","owner": "Thomas Brandt","img": "static/images/kurse/DatenanalysePython.png"},
-        {"id": 8,"title": "Cloud Computing Grundlagen","short_description": "Verstehe die Basis von Cloud-Technologien und wie du sie in deinem Unternehmen einsetzt.","owner": "Clara Vogel","img": "static/images/kurse/CloudComputing.png"},
-        {"id": 9,"title": "Digitale Transformation","short_description": "Erfahre, wie digitale Technologien Geschäftsprozesse verändern und neue Chancen schaffen.","owner": "David König","img": "static/images/kurse/DigitaleTransformation.png"},
-        {"id": 10,"title": "IT-Projektmanagement","short_description": "Lerne, wie du IT-Projekte effizient planst, steuerst und zum Erfolg führst.","owner": "Sophie Neumann","img": "static/images/kurse/ITProjektmanagement.png"}
-        ]
-    started=courses = [
-        {"id": 1, "title": "Einführung in Machine Learning","short_description":"Ein praxisnaher Einstieg in die Grundlagen des maschinellen Lernens inklusive Klassifikation, Regression und Clustering.","owner": "Felix Schneider", "img": "static/images/kurse/machine_learning.jpg", "progress": 45},
-        {"id": 2, "title": "Projektmanagement","short_description":"Erfahre die Grundlagen des Projektmanagements von Planung und Organisation bis hin zu Risikomanagement und erfolgreicher Teamführung.", "owner": "Anna Becker","img": "static/images/kurse/project_management_skill.jpg", "progress": 30},
-        {"id": 5, "title":  "Projektcontrolling und Erfolgsmessung","short_description":"Erlerne Techniken zur Überwachung von Projekten und zur Bewertung ihres Erfolgs anhand von Kennzahlen.","owner": "Kairos Denvin", "img": "static/images/kurse/Project_Control_Strategies.jpg", "progress": 20},
-        {"id": 6,"title": "Agiles Arbeiten",  "short_description": "Lerne agile Methoden wie Scrum und Kanban kennen und verbessere die Zusammenarbeit in Teams.","owner": "Lea Hoffmann","img": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=600&q=80", "progress": 60}]
+    all_courses = load_courses()
+    name = "Thomas"
 
+    # Fortschritt einfügen
+    for course in all_courses:
+        course_id = course["id"]
+        course["progress"] = user_progress.get(course_id, course.get("progress", 0))
 
-    youtube_courses = [
-        {
-            "id": 1001,
-            "title": "Python Tutorial für Anfänger",
-            "short_description": "Lerne Python programmieren mit diesem Videokurs für Einsteiger.",
-            "owner": "Programming with Mosh",
-            "img": "static/images/kurse/python_anfang.jpg",
-            "videoId": "_uQrJ0TkZlc",
-            "progress": 0
-        },
-        {
-            "id": 1002,
-            "title": "Machine Learning Crash Course",
-            "short_description": "Google's kompakter Einstieg in maschinelles Lernen.",
-            "owner": "Google Developers",
-            "img": "static/images/kurse/machine_learning_crash.jpg",
-            "videoId": "GwIo3gDZCVQ",
-            "progress": 0
-        },
-        {
-            "id": 1003,
-            "title": "JavaScript Grundlagen in 60 Minuten",
-            "short_description": "Schneller Überblick über JavaScript für Webentwicklung.",
-            "owner": "Traversy Media",
-            "img": "static/images/kurse/javascript_grundlage.jpg",
-            "videoId": "W6NZfCO5SIk",
-            "progress": 0
-        },
-        {
-            "id": 1004,
-            "title": "HTML & CSS Komplettkurs",
-            "short_description": "Lerne Webdesign von Grund auf.",
-            "owner": "The Net Ninja",
-            "img": "static/images/kurse/html_css_komplett.jpg",
-            "videoId": "mU6anWqZJcc",
-            "progress": 0
-        },
-        {
-            "id": 1005,
-            "title": "React JS Tutorial",
-            "short_description": "Erlerne moderne Frontend-Entwicklung mit React.",
-            "owner": "Academind",
-            "img": "static/images/kurse/reactJs_tutorial.jpg",
-            "videoId": "bMknfKXIFA8",
-            "progress": 0
-        },
-        {
-            "id": 1006,
-            "title": "SQL Grundlagen",
-            "short_description": "Verstehe relationale Datenbanken und SQL-Abfragen.",
-            "owner": "freeCodeCamp.org",
-            "img": "static/images/kurse/sql_grundlage.jpg",
-            "videoId": "HXV3zeQKqGY",
-            "progress": 0
-        }
-    ]
+    # Angefangene Kurse: alle mit Fortschritt > 0
+    ongoing = [c for c in all_courses if c["progress"] > 0]
 
+    # Empfohlene, Community, YouTube nach Kategorie trennen
+    empfohlen = [c for c in all_courses if c["type"] == "empfohlen"]
+    community = [c for c in all_courses if c["type"] == "community"]
+    youtube_courses = [c for c in all_courses if c["type"] == "youtube"]
 
-    suggested=courses = [{"id": 4, "title": "Supply Chain Management","short_description":"Verstehe die Abläufe in Lieferketten und lerne, wie du Effizienz und Nachhaltigkeit steigerst.","owner": "Mira Solvane", "img": "static/images/kurse/SupplyChainManagement.png"},
-                         {"id": 7,"title": "Datenanalyse mit Python","short_description": "Entdecke, wie du mit Python Daten effizient analysierst und visualisierst.","owner": "Thomas Brandt", "img": "static/images/kurse/DatenanalysePython.png"},
-                         {"id": 10,"title": "IT-Projektmanagement","short_description": "Lerne, wie du IT-Projekte effizient planst, steuerst und zum Erfolg führst.","owner": "Sophie Neumann","img": "static/images/kurse/ITProjektmanagement.png"},
-                         {"id": 8,"title": "Cloud Computing Grundlagen","short_description": "Verstehe die Basis von Cloud-Technologien und wie du sie in deinem Unternehmen einsetzt.","owner": "Clara Vogel","img": "static/images/kurse/CloudComputing.png"},
-                         {"id": 9,"title": "Digitale Transformation","short_description": "Erfahre, wie digitale Technologien Geschäftsprozesse verändern und neue Chancen schaffen.","owner": "David König","img": "static/images/kurse/DigitaleTransformation.png"}
-                         ]
-    name="Thomas"
-    l=65
-    return render_template("home.html",learn_progress=l,name=name, ongoing=started, empfohlen=suggested, community=courses, youtube_courses=youtube_courses)
+    # Durchschnittlicher Fortschritt
+    avg_progress = int(sum([c["progress"] for c in ongoing]) / len(ongoing)) if ongoing else 0
 
-
-@app.route("/suche")
-def suche():
-    return render_template("course_search.html", courses=courses, learn_progress=65)
-
-@app.route("/favoriten")
-def favoriten():
-    return render_template("favorites.html")
-
-@app.route("/profil")
-def profil():
-    return render_template("profile.html")
+    return render_template("home.html",
+                           name=name,
+                           learn_progress=avg_progress,
+                           ongoing=ongoing,
+                           empfohlen=empfohlen,
+                           community=community,
+                           youtube_courses=youtube_courses)
 
 @app.route("/kurs/<int:course_id>")
 def course_detail(course_id):
-    all_courses = started + empfohlen + community + youtube_courses  # oder global courses, falls einheitlich
+    all_courses = load_courses()
     course = next((c for c in all_courses if c["id"] == course_id), None)
     if course:
         return render_template("course_detail.html", course=course)
     return "Kurs nicht gefunden", 404
 
+@app.route("/kurs/<int:course_id>/lernen")
+def course_learn(course_id):
+    all_courses = load_courses()
+    course = next((c for c in all_courses if c["id"] == course_id), None)
+    if course:
+        progress = user_progress.get(course_id, course.get("progress", 0))
+        chapters = course.get("chapters", [
+            {"title": "Einführung", "duration": "5:00"},
+            {"title": "Hauptteil", "duration": "12:00"},
+            {"title": "Zusammenfassung", "duration": "3:00"}
+        ])
+        return render_template("course_learn.html", course=course, chapters=chapters, progress=progress)
+    return "Nicht gefunden", 404
+
+@app.route("/api/progress/<int:course_id>", methods=["POST"])
+def update_progress(course_id):
+    data = request.get_json()
+    progress = data.get("progress")
+    if isinstance(progress, int) and 0 <= progress <= 100:
+        user_progress[course_id] = progress
+        return jsonify(success=True)
+    return jsonify(success=False, error="Ungültiger Fortschritt"), 400
+
+@app.route("/suche")
+def suche():
+    all_courses = load_courses()
+    return render_template("course_search.html", courses=all_courses)
+
+@app.route("/api/courses")
+def api_courses():
+    courses = load_courses()
+
+    # Alle Parameter einsammeln
+    query = request.args.get("query", "").strip().lower()
+    kategorie = request.args.get("kategorie", "").strip().lower()
+    rolle = request.args.get("rolle", "").strip().lower()
+    format_ = request.args.get("format", "").strip().lower()
+    sprache = request.args.get("sprache", "").strip().lower()
+    sort = request.args.get("sort", "").strip().lower()
+    page = int(request.args.get("page", 1))
+    per_page = int(request.args.get("per_page", 6))
+
+    # Filter anwenden
+    def match(course):
+        return (
+            (not query or query in course.get("title", "").lower() or query in course.get("short_description", "").lower()) and
+            (not kategorie or kategorie in course.get("category", "").lower()) and
+            (not rolle or rolle in course.get("level", "").lower()) and
+            (not format_ or format_ in course.get("format", "").lower()) and
+            (not sprache or sprache in course.get("language", "").lower())
+        )
+
+    filtered = list(filter(match, courses))
+
+    # Sortierung
+    if sort == "az":
+        filtered.sort(key=lambda c: c.get("title", "").lower())
+    elif sort == "dauer_auf":
+        filtered.sort(key=lambda c: c.get("duration_minutes", 0))
+    elif sort == "dauer_ab":
+        filtered.sort(key=lambda c: c.get("duration_minutes", 0), reverse=True)
+    elif sort == "neueste":
+        filtered.sort(key=lambda c: c.get("created_at", ""), reverse=True)  # optional: Datum als ISO speichern
+    # default: keine Sortierung oder Beliebtheit
+
+    # Pagination
+    total = len(filtered)
+    total_pages = max((total + per_page - 1) // per_page, 1)
+    start = (page - 1) * per_page
+    end = start + per_page
+    paginated = filtered[start:end]
+
+    return jsonify({
+        "courses": paginated,
+        "page": page,
+        "total_pages": total_pages,
+        "total": total
+    })
+
+@app.route("/favoriten")
+def favoriten():
+    return render_template("favorites.html")
+
+@app.route("/community")
+def community():
+    return render_template("community.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
+
+# http://localhost:5000/api/courses?query=python&rolle=einsteiger&sort=az&page=1
