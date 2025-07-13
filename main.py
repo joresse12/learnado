@@ -129,6 +129,26 @@ def api_courses():
         "total": total
     })
 
+@app.route("/api/search")
+def live_search():
+    query = request.args.get("q", "").lower()
+    courses_data = load_courses()
+    if not query:
+        return jsonify(results=[])
+
+    results = [
+        {
+            "id": course["id"],
+            "title": course["title"],
+            "short_description": course.get("short_description", "")
+        }
+        for course in courses_data
+        if query in course["title"].lower() or query in course.get("short_description", "").lower()
+    ][:8]  # max 8 Ergebnisse
+
+    return jsonify(results=results)
+
+
 @app.route("/favoriten")
 def favoriten():
     return render_template("favorites.html")
