@@ -3,7 +3,7 @@
     {
       "id": 1,
       "title": "Einführung in Machine Learning",
-      "short_description": "Beschreibung für Einführung in Machine Learning",
+      "short_description": " für Einführung in Machine Learning",
       "owner": "Felix Schneider",
       "image": "static/images/kurse/machine_learning.jpg",
       "type": "community",
@@ -40,7 +40,7 @@
     {
       "id": 2,
       "title": "Projektmanagement",
-      "short_description": "Beschreibung für Projektmanagement",
+      "short_description": " für Projektmanagement",
       "owner": "Anna Becker",
       "image": "static/images/kurse/project_management_skill.jpg",
       "type": "community",
@@ -77,7 +77,7 @@
     {
       "id": 3,
       "title": "Cybersecurity 1",
-      "short_description": "Beschreibung für Cybersecurity 1",
+      "short_description": " für Cybersecurity 1",
       "owner": "Jonas Weber",
       "image": "static/images/kurse/CyberSecurity.png",
       "type": "community",
@@ -114,7 +114,7 @@
     {
       "id": 4,
       "title": "Supply Chain Management",
-      "short_description": "Beschreibung für Supply Chain Management",
+      "short_description": " für Supply Chain Management",
       "owner": "Mira Solvane",
       "image": "static/images/kurse/SupplyChainManagement.png",
       "type": "community",
@@ -151,7 +151,7 @@
     {
       "id": 5,
       "title": "Projektcontrolling und Erfolgsmessung",
-      "short_description": "Beschreibung für Projektcontrolling und Erfolgsmessung",
+      "short_description": " für Projektcontrolling und Erfolgsmessung",
       "owner": "Kairos Denvin",
       "image": "static/images/kurse/Project_Control_Strategies.jpg",
       "type": "community",
@@ -188,7 +188,7 @@
     {
       "id": 6,
       "title": "Agiles Arbeiten",
-      "short_description": "Beschreibung für Agiles Arbeiten",
+      "short_description": " für Agiles Arbeiten",
       "owner": "Lea Hoffmann",
       "image": "static/images/kurse/AgilesArbeiten.png",
       "type": "community",
@@ -225,7 +225,7 @@
     {
       "id": 7,
       "title": "Datenanalyse mit Python",
-      "short_description": "Beschreibung für Datenanalyse mit Python",
+      "short_description": " für Datenanalyse mit Python",
       "owner": "Thomas Brandt",
       "image": "static/images/kurse/DatenanalysePython.png",
       "type": "community",
@@ -262,7 +262,7 @@
     {
       "id": 8,
       "title": "Cloud Computing Grundlagen",
-      "short_description": "Beschreibung für Cloud Computing Grundlagen",
+      "short_description": " für Cloud Computing Grundlagen",
       "owner": "Clara Vogel",
       "image": "static/images/kurse/CloudComputing.png",
       "type": "community",
@@ -299,7 +299,7 @@
     {
       "id": 9,
       "title": "Digitale Transformation",
-      "short_description": "Beschreibung für Digitale Transformation",
+      "short_description": " für Digitale Transformation",
       "owner": "David König",
       "image": "static/images/kurse/DigitaleTransformation.png",
       "type": "community",
@@ -336,7 +336,7 @@
     {
       "id": 10,
       "title": "IT-Projektmanagement",
-      "short_description": "Beschreibung für IT-Projektmanagement",
+      "short_description": " für IT-Projektmanagement",
       "owner": "Sophie Neumann",
       "image": "static/images/kurse/ITProjektmanagement.png",
       "type": "community",
@@ -373,7 +373,7 @@
     {
       "id": 1001,
       "title": "Python Tutorial für Anfänger",
-      "short_description": "Python Tutorial für Anfänger Beschreibung",
+      "short_description": "Python Tutorial für Anfänger ",
       "owner": "Programming with Mosh",
       "image": "static/images/kurse/python_anfang.jpg",
       "type": "empfohlen",
@@ -410,7 +410,7 @@
     {
       "id": 1002,
       "title": "Machine Learning Crash Course",
-      "short_description": "Machine Learning Crash Course Beschreibung",
+      "short_description": "Machine Learning Crash Course ",
       "owner": "Google Developers",
       "image": "static/images/kurse/machine_learning_crash.jpg",
       "type": "empfohlen",
@@ -446,8 +446,8 @@
     },
     {
       "id": 1003,
-      "title": "JavaScript Grundlagen in 60 Minuten",
-      "short_description": "JavaScript Grundlagen in 60 Minuten Beschreibung",
+      "title": "JavaScript Grundlagen",
+      "short_description": "JavaScript Grundlagen ",
       "owner": "Traversy Media",
       "image": "static/images/kurse/javascript_grundlage.jpg",
       "type": "empfohlen",
@@ -484,7 +484,7 @@
     {
       "id": 1004,
       "title": "HTML & CSS Komplettkurs",
-      "short_description": "HTML & CSS Komplettkurs Beschreibung",
+      "short_description": "HTML & CSS Komplettkurs ",
       "owner": "The Net Ninja",
       "image": "static/images/kurse/html_css_komplett.jpg",
       "type": "empfohlen",
@@ -521,7 +521,7 @@
     {
       "id": 1005,
       "title": "React JS Tutorial",
-      "short_description": "React JS Tutorial Beschreibung",
+      "short_description": "React JS Tutorial ",
       "owner": "Academind",
       "image": "static/images/kurse/reactJs_tutorial.jpg",
       "type": "empfohlen",
@@ -558,7 +558,7 @@
     {
       "id": 1006,
       "title": "SQL Grundlagen",
-      "short_description": "SQL Grundlagen Beschreibung",
+      "short_description": "SQL Grundlagen ",
       "owner": "freeCodeCamp.org",
       "image": "static/images/kurse/sql_grundlage.jpg",
       "type": "empfohlen",

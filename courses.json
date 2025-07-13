@@ -1,0 +1,73 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "title": "Einführung in Machine Learning",
+      "short_description": "Ein praxisnaher Einstieg in die Grundlagen des maschinellen Lernens inklusive Klassifikation, Regression und Clustering.",
+      "owner": "Felix Schneider",
+      "image": "static/images/kurse/machine_learning.jpg",
+      "category": "Data Science",
+      "type": "community",
+      "videoId": null,
+      "video_url": "/static/videos/ml_intro.mp4",
+      "chapters": [
+        {
+          "title": "Einführung",
+          "duration": "5:00"
+        },
+        {
+          "title": "Supervised Learning",
+          "duration": "10:30"
+        },
+        {
+          "title": "Unsupervised Learning",
+          "duration": "8:45"
+        },
+        {
+          "title": "Zusammenfassung",
+          "duration": "3:15"
+        }
+      ],
+      "progress": 45
+    },
+    {
+      "id": 1001,
+      "title": "Python Tutorial für Anfänger",
+      "short_description": "Lerne Python programmieren mit diesem Videokurs für Einsteiger.",
+      "owner": "Programming with Mosh",
+      "image": "static/images/kurse/python_anfang.jpg",
+      "category": "Programming",
+      "type": "youtube",
+      "videoId": "_uQrJ0TkZlc",
+      "video_url": null,
+      "chapters": [],
+      "progress": 0
+    },
+    {
+      "id": 1002,
+      "title": "Machine Learning Crash Course",
+      "short_description": "Google's kompakter Einstieg in maschinelles Lernen.",
+      "owner": "Google Developers",
+      "image": "static/images/kurse/machine_learning_crash.jpg",
+      "category": "Data Science",
+      "type": "youtube",
+      "videoId": "GwIo3gDZCVQ",
+      "video_url": null,
+      "chapters": [],
+      "progress": 0
+    },
+    {
+      "id": 5,
+      "title": "Projektcontrolling und Erfolgsmessung",
+      "short_description": "Erlerne Techniken zur Überwachung von Projekten und zur Bewertung ihres Erfolgs anhand von Kennzahlen.",
+      "owner": "Kairos Denvin",
+      "image": "static/images/kurse/Project_Control_Strategies.jpg",
+      "category": "Project Management",
+      "type": "community",
+      "videoId": null,
+      "video_url": "/static/videos/projektcontrolling.mp4",
+      "chapters": [],
+      "progress": 20
+    }
+  ]
+}

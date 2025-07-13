@@ -13,18 +13,27 @@
 {% endblock %}
 
 {% block content %}
-<h1>Hallo {{ name }}!</h1>
+<section class="hero-search-section">
+  <div class="hero-search-container">
+    <h1 class="hero-greeting">Hallo {{ name }} 👋</h1>
+    <div class="search-wrapper">
+      <div class="hero-search-bar">
+        <input type="text" id="live-search" placeholder="Wonach möchtest du lernen? z. B. Python, Management, Cloud..." autocomplete="off"/>
+        <button><i class="fas fa-search"></i></button>
+      </div>
+      <ul id="search-suggestions" class="suggestions-list"></ul>
+    </div>
 
-<!-- Suchleiste -->
-<div class="search-bar">
-  <input type="text" placeholder="Suche nach Kurse, Themen oder Schlagwörter...">
-  <i class="fas fa-search"></i>
-</div>
+  </div>
+</section>
+
 
 <!-- Fortschritts-Widget -->
 {% if ongoing %}
 <div class="floating-widgets">
-  <div class="progress-box">
+  <div class="progress-box"
+  
+  >
     <h4>Dein Fortschritt</h4>
     <div class="progress-bar-container">
       <div class="progress-bar" style="width: {{ learn_progress }}%;
@@ -34,9 +43,13 @@
         {% else %}#0c6c29{% endif %};">
       </div>
     </div>
-    <p>Du hast {{ learn_progress }} % deines Lernziels erreicht!</p>
+    <div class="progress-text-icon">
+      <p>Du hast {{ learn_progress }} % deines Lernziels erreicht!</p>
+      <img src="{{ url_for('static', filename='images/lernender.png') }}" alt="Lernender Icon" class="progress-icon" />
+    </div>
   </div>
 </div>
+
 {% endif %}
 
 <!-- Angefangene Kurse -->
@@ -207,5 +220,32 @@
     </div>
   </div>
 </section>
+
+<script>
+document.getElementById("live-search").addEventListener("input", async function () {
+  const query = this.value.trim();
+  const suggestionsBox = document.getElementById("search-suggestions");
+
+  if (query.length < 2) {
+    suggestionsBox.innerHTML = "";
+    return;
+  }
+
+  const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
+  const data = await res.json();
+
+  suggestionsBox.innerHTML = "";
+  data.results.forEach(course => {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <a href="/kurs/${course.id}">
+        <strong>${course.title}</strong> <br>
+        <small>${course.short_description}</small>
+      </a>`;
+    suggestionsBox.appendChild(li);
+  });
+});
+</script>
+
 
 {% endblock %}
